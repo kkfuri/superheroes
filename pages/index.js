@@ -9,6 +9,7 @@ import Search from "@/components/search";
 import Logo from "@/components/logo";
 import Results from "@/components/results";
 import api from "utils/api";
+import ErrorState from "@/components/error-state";
 
 function Home() {
   const [items, setItems] = useState([]);
@@ -16,8 +17,9 @@ function Home() {
   const [error, setError] = useState();
 
   async function handleSearch(value) {
+    setItems([]);
     setError(null);
-    if (!value) return setItems([]);
+    if (!value) return;
     setLoading(true);
     try {
       const response = await api.get(`/search/${value}`);
@@ -32,14 +34,8 @@ function Home() {
     setLoading(false);
   }
 
-  console.log(error);
-
   useEffect(() => {
-    if (loading) {
-      disableBodyScroll();
-    } else {
-      enableBodyScroll();
-    }
+    loading ? disableBodyScroll() : enableBodyScroll();
     return clearAllBodyScrollLocks();
   });
 
@@ -66,14 +62,7 @@ function Home() {
             <Results list={items?.results} />
           </div>
         )}
-        {error && (
-          <div className="mt-20 text-center">
-            <h2 className="text-6xl font-bold text-primary-dark font-body">
-              No results! 😢
-            </h2>
-            <p className="text-xl text-primary-dark font-body">try again</p>
-          </div>
-        )}
+        {error && <ErrorState />}
       </div>
     </main>
   );
