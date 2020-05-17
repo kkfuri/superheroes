@@ -16,6 +16,9 @@ module.exports = {
       body: ["Source Sans Pro", "sans-serif"],
     },
   },
-  variants: {},
+  variants: {
+    textColor: ["responsive", "hover", "focus", "group-hover"],
+    scale: ["responsive", "hover", "focus", "active", "group-hover"],
+  },
   plugins: [],
 };
