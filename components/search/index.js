@@ -32,7 +32,7 @@ function Search({ onSearch }) {
         ref={input}
         name="search"
         autoComplete="off"
-        className="max-w-lg text-6xl"
+        className="max-w-lg text-2xl md:text-6xl"
         placeholder="press esc to focus"
         value={val}
         onChange={handleChangeSearch}
@@ -40,7 +40,7 @@ function Search({ onSearch }) {
       />
       <Button
         type="button"
-        className="max-w-xs my-2 text-2xl text-primary-dark"
+        className="max-w-xs my-2 text-xl text-primary-dark"
         onClick={triggerSearch}
       >
         Search!

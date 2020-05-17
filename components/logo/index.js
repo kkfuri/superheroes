@@ -1,6 +1,6 @@
 function Logo() {
   return (
-    <h1 className="duration-200 inline-block m-8 text-xl absolut inset-0 p-8 hover:text-primary-dark cursor-default hover:shadow-xl">
+    <h1 className="inset-0 inline-block w-full p-8 text-xl text-center duration-200 cursor-default md:m-8 md:text-left md:w-auto absolut hover:text-primary-dark hover:shadow-xl">
       Superhero
     </h1>
   );

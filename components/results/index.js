@@ -22,7 +22,7 @@ function Results({ list }) {
       variants={container}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-4 gap-8 py-12"
+      className="grid grid-cols-1 gap-8 py-12 md:grid-cols-4"
     >
       {list.map((item) => (
         <motion.div key={item.id} variants={itemMotion}>
