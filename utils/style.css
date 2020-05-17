@@ -1,5 +1,19 @@
 @tailwind base;
 
+html,
+body {
+  @apply font-body text-typography;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-display font-bold;
+}
+
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
