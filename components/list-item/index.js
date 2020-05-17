@@ -1,11 +1,17 @@
+import { motion } from "framer-motion";
+
 function ListItem({ item }) {
   return (
-    <article className="mx-auto group cursor-pointer duration-150 border border-gray-200 transform p-4 rounded-lg shadow-xl hover:shadow-2xl hover:bg-gray-100 hover:border-primary hover:scale-110">
-      <h1 className="text-center font-body duration-300 font-normal text-2xl group-hover:text-primary mb-2">
+    <motion.article
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      className="p-4 mx-auto duration-150 border border-gray-200 rounded-lg shadow-xl cursor-pointer group hover:shadow-2xl hover:border-primary"
+    >
+      <h1 className="mb-2 text-2xl font-normal text-center duration-300 font-body group-hover:text-primary">
         {item.name}
       </h1>
       <div
-        className="rounded-sm overflow-hidden shadow-md"
+        className="overflow-hidden rounded-sm shadow-md"
         style={{ width: 240, height: 320 }}
       >
         <img
@@ -15,7 +21,7 @@ function ListItem({ item }) {
           height={320}
         />
       </div>
-    </article>
+    </motion.article>
   );
 }
 
