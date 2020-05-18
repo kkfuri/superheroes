@@ -17,6 +17,8 @@ function Home() {
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState();
 
+  console.log(items);
+
   async function handleSearch(value) {
     setItems([]);
     setError(null);
