@@ -47,6 +47,9 @@ function Home() {
 
   return (
     <Layout>
+      <Head>
+        <title>Superheroes!</title>
+      </Head>
       <Logo />
       <div className="container flex flex-col flex-1 px-2 mx-auto md:px-0">
         <div className="flex flex-col items-center justify-center flex-1 duration-200 transform">
