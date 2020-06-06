@@ -2,10 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-import Layout from "@/components/layout";
+import Layout from "components/layout";
 import api from "utils/api";
-import StatInfo from "@/components/stat-info";
-import AboutInfo from "@/components/about-info";
+import StatInfo from "components/stat-info";
+import AboutInfo from "components/about-info";
 
 const Section = ({ title, children }) => {
   return (

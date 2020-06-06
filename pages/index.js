@@ -6,12 +6,12 @@ import {
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-import Search from "@/components/search";
-import Logo from "@/components/logo";
-import Results from "@/components/results";
+import Search from "components/search";
+import Logo from "components/logo";
+import Results from "components/results";
 import api from "utils/api";
-import ErrorState from "@/components/error-state";
-import Layout from "@/components/layout";
+import ErrorState from "components/error-state";
+import Layout from "components/layout";
 
 function Home() {
   const [search, setSearch] = useState();
