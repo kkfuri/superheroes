@@ -1,66 +1,85 @@
 import Head from "next/head";
+import Link from "next/link";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 import Layout from "@/components/layout";
 import api from "utils/api";
 import Logo from "@/components/logo";
+import StatInfo from "@/components/stat-info";
+import AboutInfo from "@/components/about-info";
+
+const Section = ({ title, children }) => {
+  return (
+    <section className="p-6 duration-100 rounded-md shadow cursor-default group hover:shadow-lg">
+      {title && (
+        <h4 className="text-2xl tracking-wider text-center duration-300 font-body group-hover:text-primary">
+          {title}
+        </h4>
+      )}
+      {children}
+    </section>
+  );
+};
+
+const translatorAlignment = {
+  good: "Good 😇",
+  bad: "Bad 😈",
+};
 
 const Hero = ({ hero }) => {
-  function getColor(value) {
-    const val = Number(value);
-    if (val < 20) {
-      return { bg: "bg-red-400", text: "text-red-400" };
-    } else if (val < 40) {
-      return { bg: "bg-red-600", text: "text-red-600" };
-    } else if (val < 60) {
-      return { bg: "bg-yellow-500", text: "text-yellow-500" };
-    } else if (val < 80) {
-      return { bg: "bg-green-500", text: "text-green-500" };
-    } else {
-      return { bg: "bg-primary", text: "text-primary" };
-    }
-  }
-
   return (
     <Layout>
       <Head>
         <title>{hero.name} - Superhero!</title>
       </Head>
-      <Logo />
-      <div className="container w-full px-2 mx-auto mb-8">
-        <h1 className="w-full text-6xl text-center text-primary-dark">
-          {hero.name}
+      <Link href="/">
+        <h1 className="inset-0 flex items-center justify-center inline-block w-56 p-8 text-xl text-center duration-200 cursor-default cursor-pointer md:m-8 hover:text-primary-dark hover:shadow-xl">
+          <IoMdArrowRoundBack />
+          <span className="ml-6">Return</span>
         </h1>
+      </Link>
+      <div className="container w-full px-2 mx-auto mb-8">
+        <div className="relative flex items-center justify-center">
+          <div
+            className="self-center mr-8 overflow-hidden border-2 rounded-full shadow-md border-primary"
+            style={{ width: 80, height: 80 }}
+          >
+            <img className="object-cover" src={hero?.image.url} width={220} />
+          </div>
+          <h1 className="text-6xl text-center text-primary-dark">
+            {hero.name}
+          </h1>
+        </div>
 
-        <div className="grid grid-cols-1 gap-20 p-8 my-6 bg-white rounded-lg md:grid-cols-4">
-          <section className="p-6 border border-gray-300 rounded-md">
-            <h4 className="text-2xl tracking-wider text-center font-body">
-              About
-            </h4>
-            <ul>
-              <li>
-                Full name: <strong>{hero.biography["full-name"]}</strong>
-              </li>
+        <div className="grid grid-cols-1 gap-20 p-8 my-6 bg-white rounded-lg md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="self-center mx-auto overflow-hidden rounded-lg"
+            style={{ width: 220, height: 293 }}
+          >
+            <img className="object-cover" src={hero?.image.url} width={220} />
+          </div>
+          <Section title="About">
+            <ul className="mt-2 space-y-4">
+              <AboutInfo title="Name" value={hero.biography["full-name"]} />
+              <AboutInfo title="Height" value={hero.appearance.height} />
+              <AboutInfo title="Weight" value={hero.appearance.weight} />
+              <AboutInfo title="Gender" value={hero.appearance.gender} />
+              <AboutInfo title="Race" value={hero.appearance.race} />
+              <AboutInfo
+                title="Alignment"
+                value={translatorAlignment[hero.biography.alignment]}
+              />
             </ul>
-          </section>
-          <section className="px-12 py-6 border border-gray-300 rounded-md">
-            <h4 className="text-2xl tracking-wider text-center font-body">
-              Stats
-            </h4>
+          </Section>
+          <Section title="Stats">
             <ul className="flex flex-col items-center">
-              {Object.entries(hero.powerstats).map((i) => {
-                const color = getColor(i[1]);
-                return (
-                  <li className="flex items-center w-full max-w-xs py-2 capitalize">
-                    <p className="inline-block w-full mr-8">{i[0]}</p>
-                    <p className="flex items-center flex-1 text-left">
-                      <div className={`p-1 mr-2 rounded-full ${color.bg}`} />
-                      <strong className={color.text}>{i[1]}</strong>
-                    </p>
-                  </li>
-                );
-              })}
+              {Object.entries(hero.powerstats).map((i) => (
+                <li className="w-full max-w-xs">
+                  <StatInfo title={i[0]} value={i[1]} />
+                </li>
+              ))}
             </ul>
-          </section>
+          </Section>
         </div>
       </div>
     </Layout>
