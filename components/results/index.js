@@ -25,7 +25,7 @@ function Results({ list }) {
       className="grid grid-cols-1 gap-8 py-12 md:grid-cols-4"
     >
       {list.map((item) => (
-        <motion.div key={item.id} variants={itemMotion}>
+        <motion.div key={item.id} variants={itemMotion} className="mx-auto">
           <ListItem item={item} />
         </motion.div>
       ))}

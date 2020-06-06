@@ -3,9 +3,14 @@ import { useKeyPress } from "../../hooks/useKeyPress";
 import Input from "../input";
 import Button from "../button";
 
-function Search({ onSearch }) {
-  const [val, setVal] = useState("");
+function Search({ initialValue, onSearch }) {
+  const [val, setVal] = useState(initialValue);
   const input = useRef(null);
+
+  useEffect(() => {
+    setVal(initialValue);
+    onSearch(initialValue);
+  }, [initialValue]);
 
   useKeyPress("Escape", () => {
     input.current.focus();

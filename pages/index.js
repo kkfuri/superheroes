@@ -13,15 +13,18 @@ import ErrorState from "@/components/error-state";
 import Layout from "@/components/layout";
 
 function Home() {
+  const [search, setSearch] = useState();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState();
 
-  console.log(items);
-
-  async function handleSearch(value) {
+  function resetData() {
     setItems([]);
     setError(null);
+  }
+
+  async function handleSearch(value) {
+    resetData();
     if (!value) return;
     setLoading(true);
     try {
@@ -47,7 +50,7 @@ function Home() {
       <Logo />
       <div className="container flex flex-col flex-1 px-2 mx-auto md:px-0">
         <div className="flex flex-col items-center justify-center flex-1 duration-200 transform">
-          <Search onSearch={handleSearch} />
+          <Search initialValue={search} onSearch={handleSearch} />
         </div>
         {items.results && (
           <div className="p-2 mt-20 bg-white rounded-lg shadow-lg md:p-8">
@@ -60,7 +63,7 @@ function Home() {
             <Results list={items?.results} />
           </div>
         )}
-        {error && <ErrorState />}
+        {error && <ErrorState onClickSuggestion={(v) => setSearch(v)} />}
       </div>
 
       {loading && (
