@@ -34,7 +34,7 @@ const Hero = ({ hero }) => {
       </Head>
       <Link href="/">
         <h1 className="inset-0 flex items-center justify-center inline-block w-56 p-8 text-xl text-center duration-200 cursor-default cursor-pointer md:m-8 hover:text-primary-dark hover:shadow-xl">
-          <span className="hidden md:block">
+          <span>
             <IoMdArrowRoundBack />
           </span>
           <span className="ml-6">Return</span>
@@ -43,12 +43,12 @@ const Hero = ({ hero }) => {
       <div className="container w-full px-2 mx-auto mb-8">
         <div className="relative flex items-center justify-center">
           <div
-            className="self-center mr-8 overflow-hidden border-2 rounded-full shadow-md border-primary"
+            className="self-center hidden mr-8 overflow-hidden border-2 rounded-full shadow-md md:block border-primary"
             style={{ width: 80, height: 80 }}
           >
             <img className="object-cover" src={hero?.image.url} width={220} />
           </div>
-          <h1 className="text-6xl text-center text-primary-dark">
+          <h1 className="text-3xl text-center md:text-6xl text-primary-dark">
             {hero.name}
           </h1>
         </div>
@@ -76,7 +76,7 @@ const Hero = ({ hero }) => {
           <Section title="Stats">
             <ul className="flex flex-col items-center">
               {Object.entries(hero.powerstats).map((i) => (
-                <li className="w-full max-w-xs">
+                <li className="w-full max-w-xs" key={i[0]}>
                   <StatInfo title={i[0]} value={i[1]} />
                 </li>
               ))}
