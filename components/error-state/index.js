@@ -16,7 +16,7 @@ function Suggestion({ value, children, onClick }) {
 function ErrorState({ onClickSuggestion }) {
   return (
     <div className="flex-1 mt-4 text-center">
-      <h2 className="flex items-center justify-center text-6xl text-primary-dark">
+      <h2 className="flex items-center justify-center text-4xl md:text-6xl text-primary-dark">
         No results!{" "}
         <span className="ml-4">
           <IoIosSad />
