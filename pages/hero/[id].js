@@ -4,7 +4,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 import Layout from "@/components/layout";
 import api from "utils/api";
-import Logo from "@/components/logo";
 import StatInfo from "@/components/stat-info";
 import AboutInfo from "@/components/about-info";
 
