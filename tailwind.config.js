@@ -21,7 +21,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      display: ["Balsamiq Sans", "cursive"],
+      display: ["Bitter", "cursive"],
       body: ["Source Sans Pro", "sans-serif"],
     },
   },
