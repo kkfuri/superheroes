@@ -34,7 +34,9 @@ const Hero = ({ hero }) => {
       </Head>
       <Link href="/">
         <h1 className="inset-0 flex items-center justify-center inline-block w-56 p-8 text-xl text-center duration-200 cursor-default cursor-pointer md:m-8 hover:text-primary-dark hover:shadow-xl">
-          <IoMdArrowRoundBack />
+          <span className="hidden md:block">
+            <IoMdArrowRoundBack />
+          </span>
           <span className="ml-6">Return</span>
         </h1>
       </Link>
